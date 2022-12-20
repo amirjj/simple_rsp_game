@@ -1,5 +1,6 @@
 import random
 from config import CHOICES, WINNER, score_board
+from decorators import calc_func_duration
 
 
 def get_user_choice():
@@ -43,7 +44,7 @@ def show_scoreboard():
     print("#" * 30)
 
 
-def play():
+def play_a_row():
     result = {'user': 0, 'system': 0}
     while result['user'] < 3 and result['system'] < 3:
         user_choice = get_user_choice()
@@ -60,7 +61,18 @@ def play():
     show_scoreboard()
     play_again = input("Do you want to play again? (y/n):")
     if play_again == "y":
-        play()
+        play_a_row()
+
+
+@calc_func_duration
+def play():
+    """
+    Simply for decorator purpose defined this function to prevent accumulative
+    timelapse in calc_func_duration decorator because the recursiveness of
+    play_one_row
+    :return:
+    """
+    play_a_row()
 
 
 if __name__ == '__main__':
