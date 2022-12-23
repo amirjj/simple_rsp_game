@@ -7,6 +7,12 @@ def get_user_choice():
     user_choice = input('Enter your choice (r, s, p):')
     if user_choice not in CHOICES:
         print("wrong input, select from (r, s, p).")
+        """
+        What will happen if you don't return the function? like:
+        get_user_choice() instead of return get_user_choice() ??
+        All previous (wrong) chosen characters will be return at 
+        return user_choice as well
+        """
         return get_user_choice()
     return user_choice
 
